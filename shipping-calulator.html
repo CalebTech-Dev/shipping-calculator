@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>shipping calculator</title>
+  <style>
+    input{
+      width:200px;
+      height:30px;
+      font-size:20px;
+    }
+    button{
+      width:150px;
+      height:40px;
+      font-size:20px;
+    }
+    .cs-render{
+      font-size:30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>amazon shipping calculator</h1>
+
+  <input placeholder="Add to Cart" class="js-input-el" onkeydown="
+    preskeyDown(event);
+  ">
+
+  <p class="render-cost cs-render"></p>
+
+  <button onclick="
+    calculate();
+  ">Calculate</button>
+
+  <script>
+    function preskeyDown(event) {
+      if (event.key ==='Enter'){
+      calculate();
+    }
+    }
+
+    function calculate(){
+      const inputElement = document.querySelector('.js-input-el');
+      let cost = Number(inputElement.value);
+      if (cost < 100){
+        cost = cost + 10;
+      }
+
+      document.querySelector('.render-cost').innerHTML = `$${cost}`;
+    }
+  </script>
+</body>
+</html>
